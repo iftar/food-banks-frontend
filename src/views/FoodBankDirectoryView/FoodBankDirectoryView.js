@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './FoodBankDirectoryView.css';
 
-function FoodBankDirectoryView() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Food bank directory</p>
-      </header>
-    </div>
-  );
+class FoodBankDirectoryView extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="FoodBankDirectoryView">
+        <header className="FoodBankDirectoryView-header">
+          <p>Food bank directory</p>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default FoodBankDirectoryView;

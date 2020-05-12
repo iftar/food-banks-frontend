@@ -11,8 +11,8 @@ class FoodBankView extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="FoodBankView">
+        <header className="FoodBankView-header">
           <p>Food bank: {this.state.id}</p>
         </header>
       </div>
