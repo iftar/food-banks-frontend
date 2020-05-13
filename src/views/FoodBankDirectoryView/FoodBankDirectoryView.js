@@ -4,6 +4,9 @@ import './FoodBankDirectoryView.css';
 class FoodBankDirectoryView extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      list: []
+    }
   }
 
   render() {
