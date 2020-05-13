@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './FoodBankDirectoryView.css';
 import Navbar from '../../components/Navbar/Navbar';
+import Listing from '../../components/Listing/Listing';
 
 class FoodBankDirectoryView extends Component {
   constructor(props) {
@@ -16,6 +17,9 @@ class FoodBankDirectoryView extends Component {
         <header className="FoodBankDirectoryView-header">
           <Navbar/>
         </header>
+        <div className="container">
+          <Listing/>
+        </div>
       </div>
     );
   }
