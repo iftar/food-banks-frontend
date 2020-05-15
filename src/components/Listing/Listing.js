@@ -7,7 +7,7 @@ function Listing(props) {
     foodbanks = props.foodBanks.map((foodbank, key) => {
       return (<ListItem foodbank={foodbank} key={key} />)
     });
-  } else if (props.foodBanks.length === 0) {
+  } else if (props.foodBanks && props.foodBanks.length === 0) {
     foodbanks = (
       <tr>
         <td colSpan="9">No foodbanks found</td>
