@@ -7,7 +7,7 @@ class FoodBankDirectoryView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      foodBanks: [0,3,3]
     }
   }
 
@@ -18,7 +18,7 @@ class FoodBankDirectoryView extends Component {
           <Navbar/>
         </header>
         <div className="container">
-          <Listing/>
+          <Listing foodBanks={this.state.foodBanks} />
         </div>
       </div>
     );

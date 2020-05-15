@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from '../ListItem/ListItem';
 
-function Listing() {
+function Listing(props) {
   return (
     <div className="table-responsive">
       <div>
@@ -17,7 +17,9 @@ function Listing() {
                 </tr>
             </thead>
             <tbody className="list">
-              <ListItem />
+              {props.foodBanks.map((foodbank, key) => {
+                return (<ListItem foodbank={foodbank} key={key} />)
+              })}
             </tbody>
           </table>
       </div>
