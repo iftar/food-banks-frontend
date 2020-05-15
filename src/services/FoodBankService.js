@@ -16,7 +16,7 @@ class FoodBankService {
     let csv = await this.getCSV();
     if (!csv) return [];
     let data = await this.transformCsvToJson(csv.data);
-    return data.filter(foodbank => foodbank["Approved"] === "TRUE");
+    return this.filterOnlyApproved(data);
   }
 
   async getCSV() {
@@ -30,6 +30,10 @@ class FoodBankService {
 
   async transformCsvToJson(csv) {
     return await csvtojson().fromString(csv);
+  }
+
+  filterOnlyApproved(data) {
+    return data.filter(foodbank => foodbank["Approved"] === "TRUE");
   }
 }
 
