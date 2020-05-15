@@ -9,14 +9,20 @@ class FoodBankService {
   }
 
   all() {
-    return this.getData();
+    let data = this.storageService.get('FOODBANK_DATA');
+    if (data) return JSON.parse(data);
+    else return this.getData();
   }
 
   async getData() {
     let csv = await this.getCSV();
     if (!csv) return [];
+
     let data = await this.transformCsvToJson(csv.data);
-    return this.filterOnlyApproved(data);
+    data = this.filterOnlyApproved(data);
+  
+    this.storageService.set('FOODBANK_DATA', JSON.stringify(data));
+    return data;
   }
 
   async getCSV() {

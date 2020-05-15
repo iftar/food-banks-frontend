@@ -7,7 +7,6 @@ function Listing(props) {
     foodbanks = props.foodBanks.map((foodbank, key) => {
       return (<ListItem foodbank={foodbank} key={key} />)
     });
-    console.log(props.foodBanks);
   } else {
     foodbanks = (
       <tr>
