@@ -3,7 +3,7 @@ import ListItem from '../ListItem/ListItem';
 
 function Listing(props) {
   let foodbanks = null;
-  if (props.foodBanks) {
+  if (props.foodBanks && props.foodBanks.length) {
     foodbanks = props.foodBanks.map((foodbank, key) => {
       return (<ListItem foodbank={foodbank} key={key} />)
     });
