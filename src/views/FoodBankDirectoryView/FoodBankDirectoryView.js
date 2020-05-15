@@ -30,7 +30,7 @@ class FoodBankDirectoryView extends Component {
         <header className="FoodBankDirectoryView-header">
           <Navbar/>
         </header>
-        <div className="container">
+        <div className="containerx">
           <Listing foodBanks={this.state.foodBanks} />
         </div>
       </div>

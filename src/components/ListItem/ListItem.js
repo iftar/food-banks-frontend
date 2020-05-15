@@ -24,7 +24,7 @@ function ListItem(props) {
     <tr>
       <th scope="row">
         <div className="media align-items-center">
-          <a href={foodbank.website} className="avatar rounded-circle mr-3" target="_blank">
+          <a href={foodbank.website} className="avatar rounded-circle mr-3" target="_blank" rel="noopener noreferrer">
             <img alt="food bank logo" src={foodbank.logo} />
           </a>
           <div className="media-body">
@@ -34,8 +34,8 @@ function ListItem(props) {
       </th>
       <td><a href={`mailto:${foodbank.email}`}>{foodbank.email}</a></td>
       <td><a href={`tel:${foodbank.phone}`}>{foodbank.phone}</a></td>
-      <td><a href={foodbank.website}>{foodbank.website}</a></td>
-      <td><a href={foodbank.donation_link}>Donate</a></td>
+      <td><a href={foodbank.website} target="_blank" rel="noopener noreferrer">{foodbank.website}</a></td>
+      <td><a href={foodbank.donation_link} target="_blank" rel="noopener noreferrer">Donate</a></td>
       <td>
         <address>
           {foodbank.address.line1}<br/>
