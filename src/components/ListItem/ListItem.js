@@ -1,65 +1,57 @@
 import React from 'react';
 
-function ListItem() {
+function ListItem(props) {
+  let foodbank = {
+    logo: props.foodbank["Centre Logo link"],
+    name: props.foodbank["Name of centre"],
+    email: props.foodbank["Centre Contact Email"],
+    phone: props.foodbank["Phone number"],
+    website: props.foodbank["Website"],
+    donation_link: props.foodbank["Donation link"],
+    address: {
+      line1:    props.foodbank["Address line 1"],
+      line2:    props.foodbank["Address line 2"],
+      city:     props.foodbank["City / Town"],
+      county:   props.foodbank["County"],
+      postcode: props.foodbank["Post code"]
+    },
+    delivery: props.foodbank["Do you offer delivery?"],
+    foodAvailability: props.foodbank["What times are food available?"].split('\n'),
+    notes: props.foodbank["Notes for public"],
+  };
+
   return (
     <tr>
       <th scope="row">
         <div className="media align-items-center">
-          <a href="/" className="avatar rounded-circle mr-3">
-          <img alt="placeholder" src="../../assets/img/theme/bootstrap.jpg" />
+          <a href={foodbank.website} className="avatar rounded-circle mr-3" target="_blank">
+            <img alt="food bank logo" src={foodbank.logo} />
           </a>
           <div className="media-body">
-            <span className="name mb-0 text-sm">Argon Design System</span>
+            <span className="name mb-0 text-sm">{foodbank.name}</span>
           </div>
         </div>
       </th>
-      <td className="budget">
-        $2500 USD
-      </td>
+      <td><a href={`mailto:${foodbank.email}`}>{foodbank.email}</a></td>
+      <td><a href={`tel:${foodbank.phone}`}>{foodbank.phone}</a></td>
+      <td><a href={foodbank.website}>{foodbank.website}</a></td>
+      <td><a href={foodbank.donation_link}>Donate</a></td>
       <td>
-        <span className="badge badge-dot mr-4">
-          <i className="bg-warning"></i>
-          <span className="status">pending</span>
-        </span>
+        <address>
+          {foodbank.address.line1}<br/>
+          {foodbank.address.line2}<br/>
+          {foodbank.address.city}<br/>
+          {foodbank.address.county}<br/>
+          {foodbank.address.postcode}
+        </address>
       </td>
+      <td>{foodbank.delivery}</td>
       <td>
-        <div className="avatar-group">
-          <a href="/" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-            <img alt="placeholder" src="../../assets/img/theme/team-1.jpg" />
-          </a>
-          <a href="/" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-            <img alt="placeholder" src="../../assets/img/theme/team-2.jpg" />
-          </a>
-          <a href="/" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-            <img alt="placeholder" src="../../assets/img/theme/team-3.jpg" />
-          </a>
-          <a href="/" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-            <img alt="placeholder" src="../../assets/img/theme/team-4.jpg" />
-          </a>
-        </div>
+        {foodbank.foodAvailability.map( (line, key) => {
+          return (<div key={key}>{line}</div>);
+        })}
       </td>
-      <td>
-        <div className="d-flex align-items-center">
-          <span className="completion mr-2">60%</span>
-          <div>
-            <div className="progress">
-              <div className="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width:"60%"}}></div>
-            </div>
-          </div>
-        </div>
-      </td>
-      <td className="text-right">
-        <div className="dropdown">
-          <a className="btn btn-sm btn-icon-only text-light" href="/" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i className="fas fa-ellipsis-v"></i>
-          </a>
-          <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <a className="dropdown-item" href="/">Action</a>
-            <a className="dropdown-item" href="/">Another action</a>
-            <a className="dropdown-item" href="/">Something else here</a>
-          </div>
-        </div>
-      </td>
+      <td>{foodbank.notes}</td>
     </tr>
   );
 }

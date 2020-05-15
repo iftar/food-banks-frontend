@@ -8,7 +8,7 @@ class FoodBankDirectoryView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foodBanks: [0,3,3]
+      foodBanks: null
     }
   }
 
