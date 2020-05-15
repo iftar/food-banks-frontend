@@ -1,4 +1,5 @@
 import axios from 'axios';
+import csvtojson from 'csvtojson';
 import StorageService from './StorageService';
 import {FOODBANK_CSV_URL} from '../utils/constants';
 
@@ -8,9 +9,28 @@ class FoodBankService {
   }
 
   all() {
-    return Promise.resolve([1,2,3,4]);
+    return this.getData();
   }
-  
+
+  async getData() {
+    let csv = await this.getCSV();
+    if (!csv) return [];
+    let data = await this.transformCsvToJson(csv.data);
+    return data.filter(foodbank => foodbank["Approved"] === "TRUE");
+  }
+
+  async getCSV() {
+    if (!FOODBANK_CSV_URL) return false;
+    try {
+      return await axios.get(`${FOODBANK_CSV_URL}`);
+    } catch (error) {
+      return error.response;
+    }
+  }
+
+  async transformCsvToJson(csv) {
+    return await csvtojson().fromString(csv);
+  }
 }
 
 export default FoodBankService;
